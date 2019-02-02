@@ -1,0 +1,42 @@
+<html>
+<head>
+  <style>
+    /* you can style your program here */
+  </style>
+</head>
+<body>
+  <main></main>
+</body>
+
+<script type="text/javascript" src="elm.js"></script>
+
+<script>
+  var app = Elm.Main.init({ node: document.querySelector('main') })
+  
+  app.ports.execJsonp.subscribe(function(url) {
+    execJsonp(url);
+  });
+
+  var execJsonp = function(url) {
+    // Execute the URL by creating the script DOM element
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = url;
+
+    // Insert the element, which executes the script
+    var tag = document.getElementsByTagName('script')[0];
+    tag.parentNode.insertBefore(script, tag);
+    // Remove the temp element from the DOM, to avoid DOM bloat
+    // You should be able to do this right away, without affecting JSONP execution
+    script.parentNode.removeChild(script);
+  };
+
+  // JSONP callback; name must match what is defined in the execJsonp URL
+  function jsonpCallback(data) {
+    app.ports.jsonpCallback.send(data);
+  };
+
+</script>
+
+</html>
