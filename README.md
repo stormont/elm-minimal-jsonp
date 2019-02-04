@@ -4,12 +4,14 @@ This is the accompanying code example for my [post on Medium](https://medium.com
 
 Contained within is a minimal example of using JSONP with Elm 0.19. Just a little bit of Elm with a dash of regular JavaScript.
 
-# Installation
+# Install and Run
 
 1. Download and install [Elm 0.19](https://elm-lang.org/).
 2. Clone this repo.
 3. Run `elm make` from a terminal at the root of this directory.
 4. When the compile finishes, run `elm reactor` and open up [index.html](http://localhost:8000/index.html) in your browser.
+
+If you don't want to recompile or run into issues, the compiled versions are already included in this repo; just skip step #3.
 
 # References
 
